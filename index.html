@@ -353,3 +353,115 @@ function demo(name) {
 
 </body>
 </html>
+<style>
+.auth-box {
+  background: white;
+  padding: 22px;
+  margin: 25px 0;
+  border-radius: 20px;
+  border: 1px solid #e8eeee;
+}
+.auth-tabs {
+  display: flex;
+  gap: 10px;
+  margin: 18px 0;
+}
+.auth-tabs button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  background: #edf5f1;
+  color: #087d61;
+  font-weight: bold;
+}
+.auth-tabs button.selected {
+  background: #087d61;
+  color: white;
+}
+.auth-box input {
+  width: 100%;
+  padding: 14px;
+  margin: 8px 0;
+  border: 1px solid #dce5e2;
+  border-radius: 10px;
+  font-size: 15px;
+}
+.auth-submit {
+  width: 100%;
+  padding: 15px;
+  margin-top: 12px;
+  background: #087d61;
+  color: white;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+.auth-note {
+  font-size: 12px;
+  color: #78878e;
+  margin-top: 12px;
+}
+</style>
+
+<div class="auth-box">
+  <h2>Welcome to PayBridge</h2>
+  <p style="color:#78878e;margin-top:8px">
+    Secure Digital Wallet
+  </p>
+
+  <div class="auth-tabs">
+    <button id="loginTab" class="selected"
+      onclick="showAuth('login')">Login</button>
+    <button id="registerTab"
+      onclick="showAuth('register')">Register</button>
+  </div>
+
+  <form id="loginForm"
+    onsubmit="authDemo(event,'Login')">
+    <input type="tel" placeholder="Mobile Number"
+      required>
+    <input type="password" placeholder="Password"
+      required minlength="6">
+    <button class="auth-submit" type="submit">
+      Login
+    </button>
+    <p class="auth-note">Forgot Password? Contact support.</p>
+  </form>
+
+  <form id="registerForm" style="display:none"
+    onsubmit="authDemo(event,'Registration')">
+    <input type="text" placeholder="Full Name"
+      required>
+    <input type="tel" placeholder="Mobile Number"
+      required>
+    <input type="password" placeholder="Create Password"
+      required minlength="8">
+    <button class="auth-submit" type="submit">
+      Create Account
+    </button>
+    <p class="auth-note">
+      Your account will require secure server-side registration.
+    </p>
+  </form>
+</div>
+
+<script>
+function showAuth(type) {
+  document.getElementById('loginForm').style.display =
+    type === 'login' ? 'block' : 'none';
+
+  document.getElementById('registerForm').style.display =
+    type === 'register' ? 'block' : 'none';
+
+  document.getElementById('loginTab').classList.toggle(
+    'selected', type === 'login');
+
+  document.getElementById('registerTab').classList.toggle(
+    'selected', type === 'register');
+}
+
+function authDemo(event, type) {
+  event.preventDefault();
+  alert(type + ' demo only. Backend is not connected yet.');
+}
+</script>
