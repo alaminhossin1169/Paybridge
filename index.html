@@ -490,11 +490,7 @@ function showAuth(type) {
     'selected', type === 'register');
 }
 
-function formatPhone(phone) {
-  phone = phone.trim().replace(/\s/g, '');
-  if (phone.startsWith('01')) return '+88' + phone;
-  if (phone.startsWith('8801')) return '+' + phone;
-  return phone;
+<input type="email" placeholder="Email Address"
 }
 
 async function authDemo(event, type) {
